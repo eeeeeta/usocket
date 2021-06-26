@@ -383,9 +383,9 @@ happen. Use with care."
     (setf nodelay t))
 
   (let* ((remote (when host
-                   (car (get-hosts-by-name (host-to-hostname host)))))
+                   (get-host-by-name (host-to-hostname host))))
          (local (when local-host
-                  (car (get-hosts-by-name (host-to-hostname local-host)))))
+                  (get-host-by-name (host-to-hostname local-host))))
          (ipv6 (or (and remote (= 16 (length remote)))
                    (and local (= 16 (length local)))))
          (socket (make-instance #+sbcl (if ipv6
